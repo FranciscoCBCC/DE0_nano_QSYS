@@ -1,10 +1,10 @@
 /*
  * system.h - SOPC Builder system and BSP software package information
  *
- * Machine generated for CPU 'nios2_gen2_0' in SOPC Builder design 'de0'
- * SOPC Builder design path: ../../de0.sopcinfo
+ * Machine generated for CPU 'nios2_gen2_0' in SOPC Builder design 'de0_nano'
+ * SOPC Builder design path: ../../de0_nano.sopcinfo
  *
- * Generated: Thu Jun 22 14:37:58 GMT-03:00 2017
+ * Generated: Wed Jun 28 10:50:58 GMT-03:00 2017
  */
 
 /*
@@ -171,7 +171,7 @@
 #define ALT_STDOUT_IS_JTAG_UART
 #define ALT_STDOUT_PRESENT
 #define ALT_STDOUT_TYPE "altera_avalon_jtag_uart"
-#define ALT_SYSTEM_NAME "de0"
+#define ALT_SYSTEM_NAME "de0_nano"
 
 
 /*
@@ -180,7 +180,7 @@
  */
 
 #define ALT_INCLUDE_INSTRUCTION_RELATED_EXCEPTION_API
-#define ALT_MAX_FD 4
+#define ALT_MAX_FD 32
 #define ALT_SYS_CLK none
 #define ALT_TIMESTAMP_CLK none
 
@@ -215,7 +215,7 @@
 #define ONCHIP_MEMORY2_0_CONTENTS_INFO ""
 #define ONCHIP_MEMORY2_0_DUAL_PORT 0
 #define ONCHIP_MEMORY2_0_GUI_RAM_BLOCK_TYPE "AUTO"
-#define ONCHIP_MEMORY2_0_INIT_CONTENTS_FILE "de0_onchip_memory2_0"
+#define ONCHIP_MEMORY2_0_INIT_CONTENTS_FILE "de0_nano_onchip_memory2_0"
 #define ONCHIP_MEMORY2_0_INIT_MEM_CONTENT 1
 #define ONCHIP_MEMORY2_0_INSTANCE_ID "NONE"
 #define ONCHIP_MEMORY2_0_IRQ -1
@@ -226,8 +226,8 @@
 #define ONCHIP_MEMORY2_0_READ_DURING_WRITE_MODE "DONT_CARE"
 #define ONCHIP_MEMORY2_0_SINGLE_CLOCK_OP 0
 #define ONCHIP_MEMORY2_0_SIZE_MULTIPLE 1
-#define ONCHIP_MEMORY2_0_SIZE_VALUE 35840
-#define ONCHIP_MEMORY2_0_SPAN 35840
+#define ONCHIP_MEMORY2_0_SIZE_VALUE 40960
+#define ONCHIP_MEMORY2_0_SPAN 40960
 #define ONCHIP_MEMORY2_0_TYPE "altera_avalon_onchip_memory2"
 #define ONCHIP_MEMORY2_0_WRITABLE 1
 

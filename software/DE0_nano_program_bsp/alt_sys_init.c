@@ -1,10 +1,10 @@
 /*
  * alt_sys_init.c - HAL initialization source
  *
- * Machine generated for CPU 'nios2_gen2_0' in SOPC Builder design 'de0'
- * SOPC Builder design path: ../../de0.sopcinfo
+ * Machine generated for CPU 'nios2_gen2_0' in SOPC Builder design 'de0_nano'
+ * SOPC Builder design path: ../../de0_nano.sopcinfo
  *
- * Generated: Thu Jun 22 14:37:58 GMT-03:00 2017
+ * Generated: Wed Jun 28 10:50:58 GMT-03:00 2017
  */
 
 /*
