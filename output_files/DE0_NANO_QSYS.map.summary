@@ -1,14 +1,14 @@
-Analysis & Synthesis Status : Successful - Wed Jun 28 10:48:57 2017
+Analysis & Synthesis Status : Successful - Mon Jul 03 10:37:52 2017
 Quartus II 64-Bit Version : 15.0.0 Build 145 04/22/2015 Patches 0.01we SJ Web Edition
 Revision Name : DE0_NANO_QSYS
 Top-level Entity Name : de0_nano
 Family : Cyclone IV E
-Total logic elements : 1,676
-    Total combinational functions : 1,510
-    Dedicated logic registers : 872
-Total registers : 872
+Total logic elements : 1,679
+    Total combinational functions : 1,513
+    Dedicated logic registers : 873
+Total registers : 873
 Total pins : 2
 Total virtual pins : 0
-Total memory bits : 338,944
+Total memory bits : 297,984
 Embedded Multiplier 9-bit elements : 0
 Total PLLs : 0
