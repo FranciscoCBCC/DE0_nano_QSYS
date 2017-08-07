@@ -17,7 +17,7 @@
 -- PROGRAM "Quartus II 64-Bit"
 -- VERSION "Version 15.0.0 Build 145 04/22/2015 Patches 0.01we SJ Web Edition"
 
--- DATE "07/03/2017 10:38:17"
+-- DATE "08/07/2017 09:47:15"
 
 -- 
 -- Device: Altera EP4CE22F17C6 Package FBGA256
@@ -2220,16 +2220,16 @@ SIGNAL \auto_hub|instrumentation_fabric_with_node_gen:fabric_gen_new_way:instrum
 SIGNAL \auto_hub|instrumentation_fabric_with_node_gen:fabric_gen_new_way:instrumentation_fabric|alt_sld_fab|sldfabric|jtag_hub_gen:real_sld_jtag_hub|jtag_ir_reg\ : std_logic_vector(9 DOWNTO 0);
 SIGNAL \auto_hub|instrumentation_fabric_with_node_gen:fabric_gen_new_way:instrumentation_fabric|alt_sld_fab|sldfabric_ident_writedata\ : std_logic_vector(3 DOWNTO 0);
 SIGNAL \auto_hub|instrumentation_fabric_with_node_gen:fabric_gen_new_way:instrumentation_fabric|alt_sld_fab|sldfabric|jtag_hub_gen:real_sld_jtag_hub|identity_contrib_shift_reg\ : std_logic_vector(3 DOWNTO 0);
+SIGNAL \ALT_INV_altera_internal_jtag~TCKUTAPclkctrl_outclk\ : std_logic;
+SIGNAL \rst_controller|ALT_INV_r_sync_rst~clkctrl_outclk\ : std_logic;
+SIGNAL \auto_hub|instrumentation_fabric_with_node_gen:fabric_gen_new_way:instrumentation_fabric|alt_sld_fab|sldfabric|jtag_hub_gen:real_sld_jtag_hub|shadow_jsm|ALT_INV_state\ : std_logic_vector(8 DOWNTO 3);
+SIGNAL \auto_hub|instrumentation_fabric_with_node_gen:fabric_gen_new_way:instrumentation_fabric|alt_sld_fab|sldfabric|jtag_hub_gen:real_sld_jtag_hub|ALT_INV_clr_reg~q\ : std_logic;
+SIGNAL \ALT_INV_altera_internal_jtag~TMSUTAP\ : std_logic;
+SIGNAL \nios2_gen2_0|cpu|ALT_INV_av_ld_rshift8~1_combout\ : std_logic;
 SIGNAL \nios2_gen2_0|cpu|ALT_INV_D_iw\ : std_logic_vector(2 DOWNTO 2);
 SIGNAL \rst_controller|ALT_INV_r_early_rst~q\ : std_logic;
 SIGNAL \nios2_gen2_0|cpu|the_de0_nano_nios2_gen2_0_cpu_nios2_oci|ALT_INV_address\ : std_logic_vector(8 DOWNTO 8);
 SIGNAL \nios2_gen2_0|cpu|the_de0_nano_nios2_gen2_0_cpu_nios2_oci|the_de0_nano_nios2_gen2_0_cpu_debug_slave_wrapper|de0_nano_nios2_gen2_0_cpu_debug_slave_phy|ALT_INV_virtual_state_sdr~0_combout\ : std_logic;
-SIGNAL \ALT_INV_altera_internal_jtag~TCKUTAPclkctrl_outclk\ : std_logic;
-SIGNAL \rst_controller|ALT_INV_r_sync_rst~clkctrl_outclk\ : std_logic;
-SIGNAL \nios2_gen2_0|cpu|ALT_INV_av_ld_rshift8~1_combout\ : std_logic;
-SIGNAL \auto_hub|instrumentation_fabric_with_node_gen:fabric_gen_new_way:instrumentation_fabric|alt_sld_fab|sldfabric|jtag_hub_gen:real_sld_jtag_hub|shadow_jsm|ALT_INV_state\ : std_logic_vector(8 DOWNTO 3);
-SIGNAL \auto_hub|instrumentation_fabric_with_node_gen:fabric_gen_new_way:instrumentation_fabric|alt_sld_fab|sldfabric|jtag_hub_gen:real_sld_jtag_hub|ALT_INV_clr_reg~q\ : std_logic;
-SIGNAL \ALT_INV_altera_internal_jtag~TMSUTAP\ : std_logic;
 
 BEGIN
 
@@ -2881,18 +2881,18 @@ gnd & gnd & gnd & gnd & gnd & gnd & gnd & \jtag_uart_0|de0_nano_jtag_uart_0_alt_
 \reset_reset_n~inputclkctrl_INCLK_bus\ <= (vcc & vcc & vcc & \reset_reset_n~input_o\);
 
 \clk_clk~inputclkctrl_INCLK_bus\ <= (vcc & vcc & vcc & \clk_clk~input_o\);
-\nios2_gen2_0|cpu|ALT_INV_D_iw\(2) <= NOT \nios2_gen2_0|cpu|D_iw\(2);
-\rst_controller|ALT_INV_r_early_rst~q\ <= NOT \rst_controller|r_early_rst~q\;
-\nios2_gen2_0|cpu|the_de0_nano_nios2_gen2_0_cpu_nios2_oci|ALT_INV_address\(8) <= NOT \nios2_gen2_0|cpu|the_de0_nano_nios2_gen2_0_cpu_nios2_oci|address\(8);
-\nios2_gen2_0|cpu|the_de0_nano_nios2_gen2_0_cpu_nios2_oci|the_de0_nano_nios2_gen2_0_cpu_debug_slave_wrapper|de0_nano_nios2_gen2_0_cpu_debug_slave_phy|ALT_INV_virtual_state_sdr~0_combout\ <= NOT \nios2_gen2_0|cpu|the_de0_nano_nios2_gen2_0_cpu_nios2_oci|the_de0_nano_nios2_gen2_0_cpu_debug_slave_wrapper|de0_nano_nios2_gen2_0_cpu_debug_slave_phy|virtual_state_sdr~0_combout\;
 \ALT_INV_altera_internal_jtag~TCKUTAPclkctrl_outclk\ <= NOT \altera_internal_jtag~TCKUTAPclkctrl_outclk\;
 \rst_controller|ALT_INV_r_sync_rst~clkctrl_outclk\ <= NOT \rst_controller|r_sync_rst~clkctrl_outclk\;
-\nios2_gen2_0|cpu|ALT_INV_av_ld_rshift8~1_combout\ <= NOT \nios2_gen2_0|cpu|av_ld_rshift8~1_combout\;
 \auto_hub|instrumentation_fabric_with_node_gen:fabric_gen_new_way:instrumentation_fabric|alt_sld_fab|sldfabric|jtag_hub_gen:real_sld_jtag_hub|shadow_jsm|ALT_INV_state\(8) <= NOT \auto_hub|instrumentation_fabric_with_node_gen:fabric_gen_new_way:instrumentation_fabric|alt_sld_fab|sldfabric|jtag_hub_gen:real_sld_jtag_hub|shadow_jsm|state\(8);
 \auto_hub|instrumentation_fabric_with_node_gen:fabric_gen_new_way:instrumentation_fabric|alt_sld_fab|sldfabric|jtag_hub_gen:real_sld_jtag_hub|shadow_jsm|ALT_INV_state\(3) <= NOT \auto_hub|instrumentation_fabric_with_node_gen:fabric_gen_new_way:instrumentation_fabric|alt_sld_fab|sldfabric|jtag_hub_gen:real_sld_jtag_hub|shadow_jsm|state\(3);
 \auto_hub|instrumentation_fabric_with_node_gen:fabric_gen_new_way:instrumentation_fabric|alt_sld_fab|sldfabric|jtag_hub_gen:real_sld_jtag_hub|ALT_INV_clr_reg~q\ <= NOT \auto_hub|instrumentation_fabric_with_node_gen:fabric_gen_new_way:instrumentation_fabric|alt_sld_fab|sldfabric|jtag_hub_gen:real_sld_jtag_hub|clr_reg~q\;
 \auto_hub|instrumentation_fabric_with_node_gen:fabric_gen_new_way:instrumentation_fabric|alt_sld_fab|sldfabric|jtag_hub_gen:real_sld_jtag_hub|shadow_jsm|ALT_INV_state\(4) <= NOT \auto_hub|instrumentation_fabric_with_node_gen:fabric_gen_new_way:instrumentation_fabric|alt_sld_fab|sldfabric|jtag_hub_gen:real_sld_jtag_hub|shadow_jsm|state\(4);
 \ALT_INV_altera_internal_jtag~TMSUTAP\ <= NOT \altera_internal_jtag~TMSUTAP\;
+\nios2_gen2_0|cpu|ALT_INV_av_ld_rshift8~1_combout\ <= NOT \nios2_gen2_0|cpu|av_ld_rshift8~1_combout\;
+\nios2_gen2_0|cpu|ALT_INV_D_iw\(2) <= NOT \nios2_gen2_0|cpu|D_iw\(2);
+\rst_controller|ALT_INV_r_early_rst~q\ <= NOT \rst_controller|r_early_rst~q\;
+\nios2_gen2_0|cpu|the_de0_nano_nios2_gen2_0_cpu_nios2_oci|ALT_INV_address\(8) <= NOT \nios2_gen2_0|cpu|the_de0_nano_nios2_gen2_0_cpu_nios2_oci|address\(8);
+\nios2_gen2_0|cpu|the_de0_nano_nios2_gen2_0_cpu_nios2_oci|the_de0_nano_nios2_gen2_0_cpu_debug_slave_wrapper|de0_nano_nios2_gen2_0_cpu_debug_slave_phy|ALT_INV_virtual_state_sdr~0_combout\ <= NOT \nios2_gen2_0|cpu|the_de0_nano_nios2_gen2_0_cpu_nios2_oci|the_de0_nano_nios2_gen2_0_cpu_debug_slave_wrapper|de0_nano_nios2_gen2_0_cpu_debug_slave_phy|virtual_state_sdr~0_combout\;
 
 -- Location: IOOBUF_X0_Y17_N15
 \altera_reserved_tdo~output\ : cycloneive_io_obuf
