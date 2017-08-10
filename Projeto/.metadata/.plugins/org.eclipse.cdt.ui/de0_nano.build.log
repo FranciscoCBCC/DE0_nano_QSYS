@@ -1,10 +1,10 @@
-11:52:31 **** Incremental Build of configuration Nios II for project de0_nano ****
+09:31:30 **** Incremental Build of configuration Nios II for project DE0_NANO ****
 make all 
-Info: Building ../de0_nano_bsp/
-C:/altera/15.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../de0_nano_bsp/
+Info: Building ../DE0_NANO_bsp/
+C:/altera/15.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../DE0_NANO_bsp/
 [BSP build complete]
 Info: Compiling hello_world_small.c to obj/default/hello_world_small.o
-nios2-elf-gcc -xc -MP -MMD -c -I../de0_nano_bsp//HAL/inc -I../de0_nano_bsp/ -I../de0_nano_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_CLEAN_EXIT -D'exit(a)=_exit(a)' -DALT_NO_EXIT -DALT_USE_DIRECT_DRIVERS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx  -o obj/default/hello_world_small.o hello_world_small.c
+nios2-elf-gcc -xc -MP -MMD -c -I../DE0_NANO_bsp//HAL/inc -I../DE0_NANO_bsp/ -I../DE0_NANO_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_CLEAN_EXIT -D'exit(a)=_exit(a)' -DALT_NO_EXIT -DALT_USE_DIRECT_DRIVERS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx  -o obj/default/hello_world_small.o hello_world_small.c
 hello_world_small.c: In function 'identificar_dominio':
 hello_world_small.c:331:12: warning: '*((void *)&d+4)' may be used uninitialized in this function [-Wmaybe-uninitialized]
      *l_sup = d[1];
@@ -12,14 +12,14 @@ hello_world_small.c:331:12: warning: '*((void *)&d+4)' may be used uninitialized
 hello_world_small.c:330:12: warning: 'd' may be used uninitialized in this function [-Wmaybe-uninitialized]
      *l_inf = d[0];
             ^
-Info: Linking de0_nano.elf
-nios2-elf-g++  -T'../de0_nano_bsp//linker.x' -msys-crt0='../de0_nano_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../de0_nano_bsp/  -msmallc  -Wl,-Map=de0_nano.map   -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx  -o de0_nano.elf obj/default/hello_world_small.o -lm -msys-lib=m
-nios2-elf-insert de0_nano.elf --thread_model hal --cpu_name nios2_gen2_0 --qsys true --simulation_enabled false --stderr_dev jtag_uart_0 --stdin_dev jtag_uart_0 --stdout_dev jtag_uart_0 --sopc_system_name de0_nano --quartus_project_dir "C:/Users/Francisco/Desktop/DE0_nano_QSYS" --jdi ../..//output_files/DE0_NANO_QSYS.jdi --sopcinfo C:/Users/Francisco/Desktop/DE0_nano_QSYS/software/de0_nano_bsp/../../de0_nano.sopcinfo
-Info: (de0_nano.elf) 40 KBytes program size (code + initialized data).
-Info:                3584 Bytes free for stack + heap.
-Info: Creating de0_nano.objdump
-nios2-elf-objdump --disassemble --syms --all-header --source de0_nano.elf >de0_nano.objdump
-[de0_nano build complete]
+Info: Linking DE0_NANO.elf
+nios2-elf-g++  -T'../DE0_NANO_bsp//linker.x' -msys-crt0='../DE0_NANO_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../DE0_NANO_bsp/  -msmallc  -Wl,-Map=DE0_NANO.map   -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx  -o DE0_NANO.elf obj/default/hello_world_small.o -lm -msys-lib=m
+nios2-elf-insert DE0_NANO.elf --thread_model hal --cpu_name nios2_gen2_0 --qsys true --simulation_enabled false --stderr_dev jtag_uart_0 --stdin_dev jtag_uart_0 --stdout_dev jtag_uart_0 --sopc_system_name de0_nano --quartus_project_dir "C:/Users/Francisco/Desktop/DE0_nano_QSYS" --jdi ../..//output_files/DE0_NANO_QSYS.jdi --sopcinfo C:/Users/Francisco/Desktop/DE0_nano_QSYS/software/DE0_NANO_bsp/../../de0_nano.sopcinfo
+Info: (DE0_NANO.elf) 40 KBytes program size (code + initialized data).
+Info:                32726 KBytes free for stack + heap.
+Info: Creating DE0_NANO.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source DE0_NANO.elf >DE0_NANO.objdump
+[DE0_NANO build complete]
 
-11:52:33 Build Finished (took 1s.778ms)
+09:31:31 Build Finished (took 1s.765ms)
 
