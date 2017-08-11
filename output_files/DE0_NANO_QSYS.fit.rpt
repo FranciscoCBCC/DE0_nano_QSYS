@@ -1,5 +1,5 @@
 Fitter report for DE0_NANO_QSYS
-Thu Aug 10 09:13:19 2017
+Fri Aug 11 11:14:34 2017
 Quartus II 64-Bit Version 15.0.0 Build 145 04/22/2015 Patches 0.01we SJ Web Edition
 
 
@@ -71,7 +71,7 @@ agreement for further details.
 +------------------------------------------------------------------------------------------------+
 ; Fitter Summary                                                                                 ;
 +------------------------------------+-----------------------------------------------------------+
-; Fitter Status                      ; Successful - Thu Aug 10 09:13:19 2017                     ;
+; Fitter Status                      ; Successful - Fri Aug 11 11:14:34 2017                     ;
 ; Quartus II 64-Bit Version          ; 15.0.0 Build 145 04/22/2015 Patches 0.01we SJ Web Edition ;
 ; Revision Name                      ; DE0_NANO_QSYS                                             ;
 ; Top-level Entity Name              ; de0_nano                                                  ;
@@ -3529,7 +3529,7 @@ Warning (15705): Ignored locations or region assignments to the following nodes
     Warning (15706): Node "SW[2]" is assigned to location or region, but does not exist in design
     Warning (15706): Node "SW[3]" is assigned to location or region, but does not exist in design
     Warning (15706): Node "V_SYNC" is assigned to location or region, but does not exist in design
-Info (171121): Fitter preparation operations ending: elapsed time is 00:00:04
+Info (171121): Fitter preparation operations ending: elapsed time is 00:00:03
 Info (14896): Fitter has disabled Advanced Physical Optimization because it is not supported for the current family.
 Info (170189): Fitter placement preparation operations beginning
 Info (170190): Fitter placement preparation operations ending: elapsed time is 00:00:01
@@ -3543,7 +3543,7 @@ Info (170194): Fitter routing operations ending: elapsed time is 00:00:02
 Info (170199): The Fitter performed an Auto Fit compilation.  Optimizations were skipped to reduce compilation time.
     Info (170201): Optimizations that may affect the design's routability were skipped
     Info (170200): Optimizations that may affect the design's timing were skipped
-Info (11888): Total time spent on timing analysis during the Fitter is 0.48 seconds.
+Info (11888): Total time spent on timing analysis during the Fitter is 0.49 seconds.
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (334003): Started post-fitting delay annotation
@@ -3553,9 +3553,9 @@ Warning (171167): Found invalid Fitter assignments. See the Ignored Assignments 
 Info (144001): Generated suppressed messages file C:/Users/Francisco/Desktop/DE0_nano_QSYS/output_files/DE0_NANO_QSYS.fit.smsg
 Info: Quartus II 64-Bit Fitter was successful. 0 errors, 165 warnings
     Info: Peak virtual memory: 998 megabytes
-    Info: Processing ended: Thu Aug 10 09:13:20 2017
-    Info: Elapsed time: 00:00:19
-    Info: Total CPU time (on all processors): 00:00:15
+    Info: Processing ended: Fri Aug 11 11:14:35 2017
+    Info: Elapsed time: 00:00:16
+    Info: Total CPU time (on all processors): 00:00:16
 
 
 +----------------------------+
