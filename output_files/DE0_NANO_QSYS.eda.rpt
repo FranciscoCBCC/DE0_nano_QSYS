@@ -1,5 +1,5 @@
 EDA Netlist Writer report for DE0_NANO_QSYS
-Fri Aug 11 11:14:50 2017
+Mon Sep 25 11:21:35 2017
 Quartus II 64-Bit Version 15.0.0 Build 145 04/22/2015 Patches 0.01we SJ Web Edition
 
 
@@ -37,7 +37,7 @@ agreement for further details.
 +-------------------------------------------------------------------+
 ; EDA Netlist Writer Summary                                        ;
 +---------------------------+---------------------------------------+
-; EDA Netlist Writer Status ; Successful - Fri Aug 11 11:14:50 2017 ;
+; EDA Netlist Writer Status ; Successful - Mon Sep 25 11:21:35 2017 ;
 ; Revision Name             ; DE0_NANO_QSYS                         ;
 ; Top-level Entity Name     ; de0_nano                              ;
 ; Family                    ; Cyclone IV E                          ;
@@ -89,7 +89,7 @@ agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit EDA Netlist Writer
     Info: Version 15.0.0 Build 145 04/22/2015 Patches 0.01we SJ Web Edition
-    Info: Processing started: Fri Aug 11 11:14:46 2017
+    Info: Processing started: Mon Sep 25 11:21:31 2017
 Info: Command: quartus_eda --read_settings_files=off --write_settings_files=off DE0_NANO_QSYS -c DE0_NANO_QSYS
 Info (204019): Generated file DE0_NANO_QSYS_6_1200mv_85c_slow.vho in folder "C:/Users/Francisco/Desktop/DE0_nano_QSYS/simulation/modelsim/" for EDA simulation tool
 Info (204019): Generated file DE0_NANO_QSYS_6_1200mv_0c_slow.vho in folder "C:/Users/Francisco/Desktop/DE0_nano_QSYS/simulation/modelsim/" for EDA simulation tool
@@ -101,7 +101,7 @@ Info (204019): Generated file DE0_NANO_QSYS_min_1200mv_0c_vhd_fast.sdo in folder
 Info (204019): Generated file DE0_NANO_QSYS_vhd.sdo in folder "C:/Users/Francisco/Desktop/DE0_nano_QSYS/simulation/modelsim/" for EDA simulation tool
 Info: Quartus II 64-Bit EDA Netlist Writer was successful. 0 errors, 0 warnings
     Info: Peak virtual memory: 614 megabytes
-    Info: Processing ended: Fri Aug 11 11:14:50 2017
+    Info: Processing ended: Mon Sep 25 11:21:35 2017
     Info: Elapsed time: 00:00:04
     Info: Total CPU time (on all processors): 00:00:04
 

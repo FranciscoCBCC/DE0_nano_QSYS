@@ -1,6 +1,7 @@
 
 module de0_nano (
 	clk_clk,
+	led_pio_export,
 	reset_reset_n,
 	sdram_addr,
 	sdram_ba,
@@ -13,6 +14,7 @@ module de0_nano (
 	sdram_we_n);	
 
 	input		clk_clk;
+	output	[7:0]	led_pio_export;
 	input		reset_reset_n;
 	output	[12:0]	sdram_addr;
 	output	[1:0]	sdram_ba;
