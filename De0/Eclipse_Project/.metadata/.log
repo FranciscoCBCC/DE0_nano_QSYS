@@ -1,0 +1,28 @@
+!SESSION 2017-09-27 11:07:23.809 -----------------------------------------------
+eclipse.buildId=4.3.2.M20140221-1700
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=pt_BR
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -pluginCustomization D:/francisco/arquivos_de_programas/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product -pluginCustomization D:/francisco/arquivos_de_programas/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+
+!ENTRY org.eclipse.cdt.core 1 0 2017-09-27 11:15:58.914
+!MESSAGE Indexed 'my_nios_bsp' (79 sources, 62 headers) in 4,43 sec: 1.196 declarations; 2.515 references; 110 unresolved inclusions; 6 syntax errors; 191 unresolved names (4,89%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2017-09-27 11:16:25.942
+!MESSAGE Indexed 'my_nios' (1 sources, 0 headers) in 0,02 sec: 1 declarations; 1 references; 1 unresolved inclusions; 0 syntax errors; 0 unresolved names (0,00%)
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-09-27 11:24:23.971
+!MESSAGE Executing: [D:/francisco/arquivos_de_programas/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x11010 --id=0x0 --timestamp=1506519990]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-09-27 11:24:30.190
+!MESSAGE Executing: [D:/francisco/arquivos_de_programas/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x11010 --id=0x0 --timestamp=1506519990 /cygdrive/c/Users/Francisco/Desktop/De0/QSYS/software/my_nios/my_nios.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-09-27 11:25:24.831
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-09-27 11:25:26.021
+!MESSAGE Executing: [D:/francisco/arquivos_de_programas/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x11010 --id=0x0 --timestamp=1506519990]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-09-27 11:25:29.560
+!MESSAGE Executing: [D:/francisco/arquivos_de_programas/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x11010 --id=0x0 --timestamp=1506519990 /cygdrive/c/Users/Francisco/Desktop/De0/QSYS/software/my_nios/my_nios.elf]
