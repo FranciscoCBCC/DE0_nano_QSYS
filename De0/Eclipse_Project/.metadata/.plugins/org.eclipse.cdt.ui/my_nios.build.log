@@ -1,18 +1,9 @@
-11:25:20 **** Incremental Build of configuration Nios II for project my_nios ****
+13:19:48 **** Incremental Build of configuration Nios II for project my_nios ****
 make all 
 Info: Building ../my_nios_bsp/
 D:/Francisco/Arquivos_de_Programas/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../my_nios_bsp/
 [BSP build complete]
-Info: Compiling hello_world.c to obj/default/hello_world.o
-nios2-elf-gcc -xc -MP -MMD -c -I../my_nios_bsp//HAL/inc -I../my_nios_bsp/ -I../my_nios_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx  -o obj/default/hello_world.o hello_world.c
-Info: Linking my_nios.elf
-nios2-elf-g++  -T'../my_nios_bsp//linker.x' -msys-crt0='../my_nios_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../my_nios_bsp/  -msmallc  -Wl,-Map=my_nios.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx  -o my_nios.elf obj/default/hello_world.o -lm -msys-lib=m
-nios2-elf-insert my_nios.elf --thread_model hal --cpu_name cpu --qsys true --simulation_enabled false --id 0 --sidp 0x11010 --timestamp 1506519990 --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name my_nios1 --quartus_project_dir "C:/Users/Francisco/Desktop/De0/QSYS" --sopcinfo C:/Users/Francisco/Desktop/De0/QSYS/software/my_nios_bsp/../../my_nios1.sopcinfo
-Info: (my_nios.elf) 5904 Bytes program size (code + initialized data).
-Info:               13 KBytes free for stack + heap.
-Info: Creating my_nios.objdump
-nios2-elf-objdump --disassemble --syms --all-header --source my_nios.elf >my_nios.objdump
 [my_nios build complete]
 
-11:25:24 Build Finished (took 4s.97ms)
+13:19:51 Build Finished (took 2s.645ms)
 
