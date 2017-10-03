@@ -1,7 +1,7 @@
-13:15:44 **** Build of configuration Nios II for project my_nios ****
+13:47:40 **** Build of configuration Nios II for project de0_nano_nios ****
 make all 
-Info: Building ../my_nios_bsp/
-D:/Francisco/Arquivos_de_Programas/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../my_nios_bsp/
+Info: Building ../de0_nano_nios_bsp/
+C:/altera/15.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../de0_nano_nios_bsp/
 Compiling alt_alarm_start.c...
 nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx   -o obj/HAL/src/alt_alarm_start.o HAL/src/alt_alarm_start.c
 Compiling alt_busy_sleep.c...
@@ -176,37 +176,29 @@ Compiling altera_avalon_jtag_uart_read.c...
 nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx   -o obj/drivers/src/altera_avalon_jtag_uart_read.o drivers/src/altera_avalon_jtag_uart_read.c
 Compiling altera_avalon_jtag_uart_write.c...
 nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx   -o obj/drivers/src/altera_avalon_jtag_uart_write.o drivers/src/altera_avalon_jtag_uart_write.c
-Compiling altera_avalon_sysid_qsys.c...
-nios2-elf-gcc -xc -MP -MMD -c  -I./HAL/inc -I. -I./drivers/inc -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall  -mno-hw-div -mno-hw-mul -mno-hw-mulx   -o obj/drivers/src/altera_avalon_sysid_qsys.o drivers/src/altera_avalon_sysid_qsys.c
 Creating libhal_bsp.a...
 rm -f -f libhal_bsp.a
-nios2-elf-ar -src libhal_bsp.a obj/HAL/src/alt_alarm_start.o obj/HAL/src/alt_busy_sleep.o obj/HAL/src/alt_close.o obj/HAL/src/alt_dcache_flush.o obj/HAL/src/alt_dcache_flush_all.o obj/HAL/src/alt_dcache_flush_no_writeback.o obj/HAL/src/alt_dev.o obj/HAL/src/alt_dev_llist_insert.o obj/HAL/src/alt_dma_rxchan_open.o obj/HAL/src/alt_dma_txchan_open.o obj/HAL/src/alt_do_ctors.o obj/HAL/src/alt_do_dtors.o obj/HAL/src/alt_ecc_fatal_entry.o obj/HAL/src/alt_ecc_fatal_exception.o obj/HAL/src/alt_env_lock.o obj/HAL/src/alt_environ.o obj/HAL/src/alt_errno.o obj/HAL/src/alt_exception_entry.o obj/HAL/src/alt_exception_muldiv.o obj/HAL/src/alt_exception_trap.o obj/HAL/src/alt_execve.o obj/HAL/src/alt_exit.o obj/HAL/src/alt_fcntl.o obj/HAL/src/alt_fd_lock.o obj/HAL/src/alt_fd_unlock.o obj/HAL/src/alt_find_dev.o obj/HAL/src/alt_find_file.o obj/HAL/src/alt_flash_dev.o obj/HAL/src/alt_fork.o obj/HAL/src/alt_fs_reg.o obj/HAL/src/alt_fstat.o obj/HAL/src/alt_get_fd.o obj/HAL/src/alt_getchar.o obj/HAL/src/alt_getpid.o obj/HAL/src/alt_gettod.o obj/HAL/src/alt_gmon.o obj/HAL/src/alt_icache_flush.o obj/HAL/src/alt_icache_flush_all.o obj/HAL/src/alt_iic.o obj/HAL/src/alt_iic_isr_register.o obj/HAL/src/alt_instruction_exception_entry.o obj/HAL/src/alt_instruction_exception_register.o obj/HAL/src/alt_io_redirect.o obj/HAL/src/alt_ioctl.o obj/HAL/src/alt_irq_entry.o obj/HAL/src/alt_irq_handler.o obj/HAL/src/alt_irq_register.o obj/HAL/src/alt_irq_vars.o obj/HAL/src/alt_isatty.o obj/HAL/src/alt_kill.o obj/HAL/src/alt_link.o obj/HAL/src/alt_load.o obj/HAL/src/alt_log_macro.o obj/HAL/src/alt_log_printf.o obj/HAL/src/alt_lseek.o obj/HAL/src/alt_main.o obj/HAL/src/alt_malloc_lock.o obj/HAL/src/alt_mcount.o obj/HAL/src/alt_open.o obj/HAL/src/alt_printf.o obj/HAL/src/alt_putchar.o obj/HAL/src/alt_putstr.o obj/HAL/src/alt_read.o obj/HAL/src/alt_release_fd.o obj/HAL/src/alt_remap_cached.o obj/HAL/src/alt_remap_uncached.o obj/HAL/src/alt_rename.o obj/HAL/src/alt_sbrk.o obj/HAL/src/alt_settod.o obj/HAL/src/alt_software_exception.o obj/HAL/src/alt_stat.o obj/HAL/src/alt_tick.o obj/HAL/src/alt_times.o obj/HAL/src/alt_uncached_free.o obj/HAL/src/alt_uncached_malloc.o obj/HAL/src/alt_unlink.o obj/HAL/src/alt_usleep.o obj/HAL/src/alt_wait.o obj/HAL/src/alt_write.o obj/HAL/src/altera_nios2_gen2_irq.o obj/HAL/src/crt0.o obj/alt_sys_init.o obj/drivers/src/altera_avalon_jtag_uart_fd.o obj/drivers/src/altera_avalon_jtag_uart_init.o obj/drivers/src/altera_avalon_jtag_uart_ioctl.o obj/drivers/src/altera_avalon_jtag_uart_read.o obj/drivers/src/altera_avalon_jtag_uart_write.o obj/drivers/src/altera_avalon_sysid_qsys.o
+nios2-elf-ar -src libhal_bsp.a obj/HAL/src/alt_alarm_start.o obj/HAL/src/alt_busy_sleep.o obj/HAL/src/alt_close.o obj/HAL/src/alt_dcache_flush.o obj/HAL/src/alt_dcache_flush_all.o obj/HAL/src/alt_dcache_flush_no_writeback.o obj/HAL/src/alt_dev.o obj/HAL/src/alt_dev_llist_insert.o obj/HAL/src/alt_dma_rxchan_open.o obj/HAL/src/alt_dma_txchan_open.o obj/HAL/src/alt_do_ctors.o obj/HAL/src/alt_do_dtors.o obj/HAL/src/alt_ecc_fatal_entry.o obj/HAL/src/alt_ecc_fatal_exception.o obj/HAL/src/alt_env_lock.o obj/HAL/src/alt_environ.o obj/HAL/src/alt_errno.o obj/HAL/src/alt_exception_entry.o obj/HAL/src/alt_exception_muldiv.o obj/HAL/src/alt_exception_trap.o obj/HAL/src/alt_execve.o obj/HAL/src/alt_exit.o obj/HAL/src/alt_fcntl.o obj/HAL/src/alt_fd_lock.o obj/HAL/src/alt_fd_unlock.o obj/HAL/src/alt_find_dev.o obj/HAL/src/alt_find_file.o obj/HAL/src/alt_flash_dev.o obj/HAL/src/alt_fork.o obj/HAL/src/alt_fs_reg.o obj/HAL/src/alt_fstat.o obj/HAL/src/alt_get_fd.o obj/HAL/src/alt_getchar.o obj/HAL/src/alt_getpid.o obj/HAL/src/alt_gettod.o obj/HAL/src/alt_gmon.o obj/HAL/src/alt_icache_flush.o obj/HAL/src/alt_icache_flush_all.o obj/HAL/src/alt_iic.o obj/HAL/src/alt_iic_isr_register.o obj/HAL/src/alt_instruction_exception_entry.o obj/HAL/src/alt_instruction_exception_register.o obj/HAL/src/alt_io_redirect.o obj/HAL/src/alt_ioctl.o obj/HAL/src/alt_irq_entry.o obj/HAL/src/alt_irq_handler.o obj/HAL/src/alt_irq_register.o obj/HAL/src/alt_irq_vars.o obj/HAL/src/alt_isatty.o obj/HAL/src/alt_kill.o obj/HAL/src/alt_link.o obj/HAL/src/alt_load.o obj/HAL/src/alt_log_macro.o obj/HAL/src/alt_log_printf.o obj/HAL/src/alt_lseek.o obj/HAL/src/alt_main.o obj/HAL/src/alt_malloc_lock.o obj/HAL/src/alt_mcount.o obj/HAL/src/alt_open.o obj/HAL/src/alt_printf.o obj/HAL/src/alt_putchar.o obj/HAL/src/alt_putstr.o obj/HAL/src/alt_read.o obj/HAL/src/alt_release_fd.o obj/HAL/src/alt_remap_cached.o obj/HAL/src/alt_remap_uncached.o obj/HAL/src/alt_rename.o obj/HAL/src/alt_sbrk.o obj/HAL/src/alt_settod.o obj/HAL/src/alt_software_exception.o obj/HAL/src/alt_stat.o obj/HAL/src/alt_tick.o obj/HAL/src/alt_times.o obj/HAL/src/alt_uncached_free.o obj/HAL/src/alt_uncached_malloc.o obj/HAL/src/alt_unlink.o obj/HAL/src/alt_usleep.o obj/HAL/src/alt_wait.o obj/HAL/src/alt_write.o obj/HAL/src/altera_nios2_gen2_irq.o obj/HAL/src/crt0.o obj/alt_sys_init.o obj/drivers/src/altera_avalon_jtag_uart_fd.o obj/drivers/src/altera_avalon_jtag_uart_init.o obj/drivers/src/altera_avalon_jtag_uart_ioctl.o obj/drivers/src/altera_avalon_jtag_uart_read.o obj/drivers/src/altera_avalon_jtag_uart_write.o
 [BSP build complete]
 Info: Compiling hello_world.c to obj/default/hello_world.o
-nios2-elf-gcc -xc -MP -MMD -c -I../my_nios_bsp//HAL/inc -I../my_nios_bsp/ -I../my_nios_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx  -o obj/default/hello_world.o hello_world.c
-Info: Linking my_nios.elf
-nios2-elf-g++  -T'../my_nios_bsp//linker.x' -msys-crt0='../my_nios_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../my_nios_bsp/   -Wl,-Map=my_nios.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx  -o my_nios.elf obj/default/hello_world.o -lm -msys-lib=m
-nios2-elf-insert my_nios.elf --thread_model hal --cpu_name cpu --qsys true --simulation_enabled false --id 0 --sidp 0x4011010 --timestamp 1506524032 --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name my_nios1 --quartus_project_dir "C:/Users/Francisco/Desktop/DE0_nano_QSYS/De0/QSYS" --sopcinfo C:/Users/Francisco/Desktop/DE0_nano_QSYS/De0/QSYS/software/my_nios_bsp/../../my_nios1.sopcinfo
-Info: (my_nios.elf) 28 KBytes program size (code + initialized data).
-Info:               32733 KBytes free for stack + heap.
-Info: Creating my_nios.objdump
-nios2-elf-objdump --disassemble --syms --all-header --source my_nios.elf >my_nios.objdump
-[my_nios build complete]
-13:19:05 **** Build of configuration Nios II for project my_nios ****
+nios2-elf-gcc -xc -MP -MMD -c -I../de0_nano_nios_bsp//HAL/inc -I../de0_nano_nios_bsp/ -I../de0_nano_nios_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx  -o obj/default/hello_world.o hello_world.c
+Info: Linking de0_nano_nios.elf
+nios2-elf-g++  -T'../de0_nano_nios_bsp//linker.x' -msys-crt0='../de0_nano_nios_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../de0_nano_nios_bsp/   -Wl,-Map=de0_nano_nios.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx  -o de0_nano_nios.elf obj/default/hello_world.o -lm -msys-lib=m
+nios2-elf-insert de0_nano_nios.elf --thread_model hal --cpu_name nios2_processor --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name my_nios1 --quartus_project_dir "C:/Users/Francisco/Desktop/DE0_nano_QSYS/De0/QSYS" --sopcinfo C:/Users/Francisco/Desktop/DE0_nano_QSYS/De0/QSYS/software/de0_nano_nios_bsp/../../my_nios1.sopcinfo
+Info: (de0_nano_nios.elf) 28 KBytes program size (code + initialized data).
+Info:                     32733 KBytes free for stack + heap.
+Info: Creating de0_nano_nios.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source de0_nano_nios.elf >de0_nano_nios.objdump
+[de0_nano_nios build complete]
+13:48:32 **** Build of configuration Nios II for project de0_nano_nios ****
 make all 
-Info: Building ../my_nios_bsp/
-D:/Francisco/Arquivos_de_Programas/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../my_nios_bsp/
+Info: Building ../de0_nano_nios_bsp/
+C:/altera/15.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../de0_nano_nios_bsp/
 [BSP build complete]
-[my_nios build complete]
-13:19:13 **** Incremental Build of configuration Nios II for project my_nios ****
+[de0_nano_nios build complete]
+13:48:33 **** Incremental Build of configuration Nios II for project de0_nano_nios ****
 make all 
-Info: Building ../my_nios_bsp/
-D:/Francisco/Arquivos_de_Programas/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../my_nios_bsp/
+Info: Building ../de0_nano_nios_bsp/
+C:/altera/15.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../de0_nano_nios_bsp/
 [BSP build complete]
-[my_nios build complete]
-13:19:48 **** Incremental Build of configuration Nios II for project my_nios ****
-make all 
-Info: Building ../my_nios_bsp/
-D:/Francisco/Arquivos_de_Programas/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../my_nios_bsp/
-[BSP build complete]
-[my_nios build complete]
+[de0_nano_nios build complete]
