@@ -8,20 +8,19 @@ use IEEE.numeric_std.all;
 
 entity my_nios1 is
 	port (
-		clk_clk         : in    std_logic                     := '0';             --       clk.clk
-		leds_export     : out   std_logic_vector(7 downto 0);                     --      leds.export
-		reset_reset_n   : in    std_logic                     := '0';             --     reset.reset_n
-		sdram_addr      : out   std_logic_vector(12 downto 0);                    --     sdram.addr
-		sdram_ba        : out   std_logic_vector(1 downto 0);                     --          .ba
-		sdram_cas_n     : out   std_logic;                                        --          .cas_n
-		sdram_cke       : out   std_logic;                                        --          .cke
-		sdram_cs_n      : out   std_logic;                                        --          .cs_n
-		sdram_dq        : inout std_logic_vector(15 downto 0) := (others => '0'); --          .dq
-		sdram_dqm       : out   std_logic_vector(1 downto 0);                     --          .dqm
-		sdram_ras_n     : out   std_logic;                                        --          .ras_n
-		sdram_we_n      : out   std_logic;                                        --          .we_n
-		sdram_clk_clk   : out   std_logic;                                        -- sdram_clk.clk
-		switches_export : in    std_logic_vector(7 downto 0)  := (others => '0')  --  switches.export
+		clk_clk         : in    std_logic                     := '0';             --      clk.clk
+		leds_export     : out   std_logic_vector(7 downto 0);                     --     leds.export
+		reset_reset_n   : in    std_logic                     := '0';             --    reset.reset_n
+		sdram_addr      : out   std_logic_vector(12 downto 0);                    --    sdram.addr
+		sdram_ba        : out   std_logic_vector(1 downto 0);                     --         .ba
+		sdram_cas_n     : out   std_logic;                                        --         .cas_n
+		sdram_cke       : out   std_logic;                                        --         .cke
+		sdram_cs_n      : out   std_logic;                                        --         .cs_n
+		sdram_dq        : inout std_logic_vector(15 downto 0) := (others => '0'); --         .dq
+		sdram_dqm       : out   std_logic_vector(1 downto 0);                     --         .dqm
+		sdram_ras_n     : out   std_logic;                                        --         .ras_n
+		sdram_we_n      : out   std_logic;                                        --         .we_n
+		switches_export : in    std_logic_vector(7 downto 0)  := (others => '0')  -- switches.export
 	);
 end entity my_nios1;
 
@@ -39,15 +38,21 @@ architecture rtl of my_nios1 is
 		);
 	end component my_nios1_LEDs;
 
-	component my_nios1_clocks is
+	component my_nios1_altpll_0 is
 		port (
-			ref_clk_clk        : in  std_logic := 'X'; -- clk
-			ref_reset_reset    : in  std_logic := 'X'; -- reset
-			sys_clk_clk        : out std_logic;        -- clk
-			sdram_clk_clk      : out std_logic;        -- clk
-			reset_source_reset : out std_logic         -- reset
+			clk       : in  std_logic                     := 'X';             -- clk
+			reset     : in  std_logic                     := 'X';             -- reset
+			read      : in  std_logic                     := 'X';             -- read
+			write     : in  std_logic                     := 'X';             -- write
+			address   : in  std_logic_vector(1 downto 0)  := (others => 'X'); -- address
+			readdata  : out std_logic_vector(31 downto 0);                    -- readdata
+			writedata : in  std_logic_vector(31 downto 0) := (others => 'X'); -- writedata
+			c0        : out std_logic;                                        -- clk
+			areset    : in  std_logic                     := 'X';             -- export
+			locked    : out std_logic;                                        -- export
+			phasedone : out std_logic                                         -- export
 		);
-	end component my_nios1_clocks;
+	end component my_nios1_altpll_0;
 
 	component my_nios1_jtag_uart is
 		port (
@@ -69,18 +74,20 @@ architecture rtl of my_nios1 is
 			clk                                 : in  std_logic                     := 'X';             -- clk
 			reset_n                             : in  std_logic                     := 'X';             -- reset_n
 			reset_req                           : in  std_logic                     := 'X';             -- reset_req
-			d_address                           : out std_logic_vector(27 downto 0);                    -- address
+			d_address                           : out std_logic_vector(26 downto 0);                    -- address
 			d_byteenable                        : out std_logic_vector(3 downto 0);                     -- byteenable
 			d_read                              : out std_logic;                                        -- read
 			d_readdata                          : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
 			d_waitrequest                       : in  std_logic                     := 'X';             -- waitrequest
 			d_write                             : out std_logic;                                        -- write
 			d_writedata                         : out std_logic_vector(31 downto 0);                    -- writedata
+			d_readdatavalid                     : in  std_logic                     := 'X';             -- readdatavalid
 			debug_mem_slave_debugaccess_to_roms : out std_logic;                                        -- debugaccess
-			i_address                           : out std_logic_vector(27 downto 0);                    -- address
+			i_address                           : out std_logic_vector(26 downto 0);                    -- address
 			i_read                              : out std_logic;                                        -- read
 			i_readdata                          : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
 			i_waitrequest                       : in  std_logic                     := 'X';             -- waitrequest
+			i_readdatavalid                     : in  std_logic                     := 'X';             -- readdatavalid
 			irq                                 : in  std_logic_vector(31 downto 0) := (others => 'X'); -- irq
 			debug_reset_request                 : out std_logic;                                        -- reset
 			debug_mem_slave_address             : in  std_logic_vector(8 downto 0)  := (others => 'X'); -- address
@@ -147,21 +154,23 @@ architecture rtl of my_nios1 is
 
 	component my_nios1_mm_interconnect_0 is
 		port (
-			clocks_sys_clk_clk                                : in  std_logic                     := 'X';             -- clk
+			altpll_0_c0_clk                                   : in  std_logic                     := 'X';             -- clk
 			jtag_uart_reset_reset_bridge_in_reset_reset       : in  std_logic                     := 'X';             -- reset
 			nios2_processor_reset_reset_bridge_in_reset_reset : in  std_logic                     := 'X';             -- reset
-			nios2_processor_data_master_address               : in  std_logic_vector(27 downto 0) := (others => 'X'); -- address
+			nios2_processor_data_master_address               : in  std_logic_vector(26 downto 0) := (others => 'X'); -- address
 			nios2_processor_data_master_waitrequest           : out std_logic;                                        -- waitrequest
 			nios2_processor_data_master_byteenable            : in  std_logic_vector(3 downto 0)  := (others => 'X'); -- byteenable
 			nios2_processor_data_master_read                  : in  std_logic                     := 'X';             -- read
 			nios2_processor_data_master_readdata              : out std_logic_vector(31 downto 0);                    -- readdata
+			nios2_processor_data_master_readdatavalid         : out std_logic;                                        -- readdatavalid
 			nios2_processor_data_master_write                 : in  std_logic                     := 'X';             -- write
 			nios2_processor_data_master_writedata             : in  std_logic_vector(31 downto 0) := (others => 'X'); -- writedata
 			nios2_processor_data_master_debugaccess           : in  std_logic                     := 'X';             -- debugaccess
-			nios2_processor_instruction_master_address        : in  std_logic_vector(27 downto 0) := (others => 'X'); -- address
+			nios2_processor_instruction_master_address        : in  std_logic_vector(26 downto 0) := (others => 'X'); -- address
 			nios2_processor_instruction_master_waitrequest    : out std_logic;                                        -- waitrequest
 			nios2_processor_instruction_master_read           : in  std_logic                     := 'X';             -- read
 			nios2_processor_instruction_master_readdata       : out std_logic_vector(31 downto 0);                    -- readdata
+			nios2_processor_instruction_master_readdatavalid  : out std_logic;                                        -- readdatavalid
 			jtag_uart_avalon_jtag_slave_address               : out std_logic_vector(0 downto 0);                     -- address
 			jtag_uart_avalon_jtag_slave_write                 : out std_logic;                                        -- write
 			jtag_uart_avalon_jtag_slave_read                  : out std_logic;                                        -- read
@@ -307,11 +316,11 @@ architecture rtl of my_nios1 is
 		);
 		port (
 			reset_in0      : in  std_logic := 'X'; -- reset
-			reset_in1      : in  std_logic := 'X'; -- reset
 			clk            : in  std_logic := 'X'; -- clk
 			reset_out      : out std_logic;        -- reset
 			reset_req      : out std_logic;        -- reset_req
 			reset_req_in0  : in  std_logic := 'X'; -- reset_req
+			reset_in1      : in  std_logic := 'X'; -- reset
 			reset_req_in1  : in  std_logic := 'X'; -- reset_req
 			reset_in2      : in  std_logic := 'X'; -- reset
 			reset_req_in2  : in  std_logic := 'X'; -- reset_req
@@ -344,85 +353,21 @@ architecture rtl of my_nios1 is
 		);
 	end component my_nios1_rst_controller_001;
 
-	component my_nios1_rst_controller_002 is
-		generic (
-			NUM_RESET_INPUTS          : integer := 6;
-			OUTPUT_RESET_SYNC_EDGES   : string  := "deassert";
-			SYNC_DEPTH                : integer := 2;
-			RESET_REQUEST_PRESENT     : integer := 0;
-			RESET_REQ_WAIT_TIME       : integer := 1;
-			MIN_RST_ASSERTION_TIME    : integer := 3;
-			RESET_REQ_EARLY_DSRT_TIME : integer := 1;
-			USE_RESET_REQUEST_IN0     : integer := 0;
-			USE_RESET_REQUEST_IN1     : integer := 0;
-			USE_RESET_REQUEST_IN2     : integer := 0;
-			USE_RESET_REQUEST_IN3     : integer := 0;
-			USE_RESET_REQUEST_IN4     : integer := 0;
-			USE_RESET_REQUEST_IN5     : integer := 0;
-			USE_RESET_REQUEST_IN6     : integer := 0;
-			USE_RESET_REQUEST_IN7     : integer := 0;
-			USE_RESET_REQUEST_IN8     : integer := 0;
-			USE_RESET_REQUEST_IN9     : integer := 0;
-			USE_RESET_REQUEST_IN10    : integer := 0;
-			USE_RESET_REQUEST_IN11    : integer := 0;
-			USE_RESET_REQUEST_IN12    : integer := 0;
-			USE_RESET_REQUEST_IN13    : integer := 0;
-			USE_RESET_REQUEST_IN14    : integer := 0;
-			USE_RESET_REQUEST_IN15    : integer := 0;
-			ADAPT_RESET_REQUEST       : integer := 0
-		);
-		port (
-			reset_in0      : in  std_logic := 'X'; -- reset
-			clk            : in  std_logic := 'X'; -- clk
-			reset_out      : out std_logic;        -- reset
-			reset_req      : out std_logic;        -- reset_req
-			reset_req_in0  : in  std_logic := 'X'; -- reset_req
-			reset_in1      : in  std_logic := 'X'; -- reset
-			reset_req_in1  : in  std_logic := 'X'; -- reset_req
-			reset_in2      : in  std_logic := 'X'; -- reset
-			reset_req_in2  : in  std_logic := 'X'; -- reset_req
-			reset_in3      : in  std_logic := 'X'; -- reset
-			reset_req_in3  : in  std_logic := 'X'; -- reset_req
-			reset_in4      : in  std_logic := 'X'; -- reset
-			reset_req_in4  : in  std_logic := 'X'; -- reset_req
-			reset_in5      : in  std_logic := 'X'; -- reset
-			reset_req_in5  : in  std_logic := 'X'; -- reset_req
-			reset_in6      : in  std_logic := 'X'; -- reset
-			reset_req_in6  : in  std_logic := 'X'; -- reset_req
-			reset_in7      : in  std_logic := 'X'; -- reset
-			reset_req_in7  : in  std_logic := 'X'; -- reset_req
-			reset_in8      : in  std_logic := 'X'; -- reset
-			reset_req_in8  : in  std_logic := 'X'; -- reset_req
-			reset_in9      : in  std_logic := 'X'; -- reset
-			reset_req_in9  : in  std_logic := 'X'; -- reset_req
-			reset_in10     : in  std_logic := 'X'; -- reset
-			reset_req_in10 : in  std_logic := 'X'; -- reset_req
-			reset_in11     : in  std_logic := 'X'; -- reset
-			reset_req_in11 : in  std_logic := 'X'; -- reset_req
-			reset_in12     : in  std_logic := 'X'; -- reset
-			reset_req_in12 : in  std_logic := 'X'; -- reset_req
-			reset_in13     : in  std_logic := 'X'; -- reset
-			reset_req_in13 : in  std_logic := 'X'; -- reset_req
-			reset_in14     : in  std_logic := 'X'; -- reset
-			reset_req_in14 : in  std_logic := 'X'; -- reset_req
-			reset_in15     : in  std_logic := 'X'; -- reset
-			reset_req_in15 : in  std_logic := 'X'  -- reset_req
-		);
-	end component my_nios1_rst_controller_002;
-
-	signal clocks_sys_clk_clk                                            : std_logic;                     -- clocks:sys_clk_clk -> [LEDs:clk, irq_mapper:clk, jtag_uart:clk, mm_interconnect_0:clocks_sys_clk_clk, nios2_processor:clk, onchip_memory:clk, rst_controller:clk, rst_controller_002:clk, sdram:clk, switches:clk]
+	signal altpll_0_c0_clk                                               : std_logic;                     -- altpll_0:c0 -> [LEDs:clk, irq_mapper:clk, jtag_uart:clk, mm_interconnect_0:altpll_0_c0_clk, nios2_processor:clk, onchip_memory:clk, rst_controller:clk, rst_controller_002:clk, sdram:clk, switches:clk]
 	signal nios2_processor_data_master_readdata                          : std_logic_vector(31 downto 0); -- mm_interconnect_0:nios2_processor_data_master_readdata -> nios2_processor:d_readdata
 	signal nios2_processor_data_master_waitrequest                       : std_logic;                     -- mm_interconnect_0:nios2_processor_data_master_waitrequest -> nios2_processor:d_waitrequest
 	signal nios2_processor_data_master_debugaccess                       : std_logic;                     -- nios2_processor:debug_mem_slave_debugaccess_to_roms -> mm_interconnect_0:nios2_processor_data_master_debugaccess
-	signal nios2_processor_data_master_address                           : std_logic_vector(27 downto 0); -- nios2_processor:d_address -> mm_interconnect_0:nios2_processor_data_master_address
+	signal nios2_processor_data_master_address                           : std_logic_vector(26 downto 0); -- nios2_processor:d_address -> mm_interconnect_0:nios2_processor_data_master_address
 	signal nios2_processor_data_master_byteenable                        : std_logic_vector(3 downto 0);  -- nios2_processor:d_byteenable -> mm_interconnect_0:nios2_processor_data_master_byteenable
 	signal nios2_processor_data_master_read                              : std_logic;                     -- nios2_processor:d_read -> mm_interconnect_0:nios2_processor_data_master_read
+	signal nios2_processor_data_master_readdatavalid                     : std_logic;                     -- mm_interconnect_0:nios2_processor_data_master_readdatavalid -> nios2_processor:d_readdatavalid
 	signal nios2_processor_data_master_write                             : std_logic;                     -- nios2_processor:d_write -> mm_interconnect_0:nios2_processor_data_master_write
 	signal nios2_processor_data_master_writedata                         : std_logic_vector(31 downto 0); -- nios2_processor:d_writedata -> mm_interconnect_0:nios2_processor_data_master_writedata
 	signal nios2_processor_instruction_master_readdata                   : std_logic_vector(31 downto 0); -- mm_interconnect_0:nios2_processor_instruction_master_readdata -> nios2_processor:i_readdata
 	signal nios2_processor_instruction_master_waitrequest                : std_logic;                     -- mm_interconnect_0:nios2_processor_instruction_master_waitrequest -> nios2_processor:i_waitrequest
-	signal nios2_processor_instruction_master_address                    : std_logic_vector(27 downto 0); -- nios2_processor:i_address -> mm_interconnect_0:nios2_processor_instruction_master_address
+	signal nios2_processor_instruction_master_address                    : std_logic_vector(26 downto 0); -- nios2_processor:i_address -> mm_interconnect_0:nios2_processor_instruction_master_address
 	signal nios2_processor_instruction_master_read                       : std_logic;                     -- nios2_processor:i_read -> mm_interconnect_0:nios2_processor_instruction_master_read
+	signal nios2_processor_instruction_master_readdatavalid              : std_logic;                     -- mm_interconnect_0:nios2_processor_instruction_master_readdatavalid -> nios2_processor:i_readdatavalid
 	signal mm_interconnect_0_jtag_uart_avalon_jtag_slave_chipselect      : std_logic;                     -- mm_interconnect_0:jtag_uart_avalon_jtag_slave_chipselect -> jtag_uart:av_chipselect
 	signal mm_interconnect_0_jtag_uart_avalon_jtag_slave_readdata        : std_logic_vector(31 downto 0); -- jtag_uart:av_readdata -> mm_interconnect_0:jtag_uart_avalon_jtag_slave_readdata
 	signal mm_interconnect_0_jtag_uart_avalon_jtag_slave_waitrequest     : std_logic;                     -- jtag_uart:av_waitrequest -> mm_interconnect_0:jtag_uart_avalon_jtag_slave_waitrequest
@@ -465,8 +410,8 @@ architecture rtl of my_nios1 is
 	signal nios2_processor_irq_irq                                       : std_logic_vector(31 downto 0); -- irq_mapper:sender_irq -> nios2_processor:irq
 	signal rst_controller_reset_out_reset                                : std_logic;                     -- rst_controller:reset_out -> [irq_mapper:reset, mm_interconnect_0:nios2_processor_reset_reset_bridge_in_reset_reset, onchip_memory:reset, rst_controller_reset_out_reset:in, rst_translator:in_reset]
 	signal rst_controller_reset_out_reset_req                            : std_logic;                     -- rst_controller:reset_req -> [nios2_processor:reset_req, onchip_memory:reset_req, rst_translator:reset_req_in]
-	signal nios2_processor_debug_reset_request_reset                     : std_logic;                     -- nios2_processor:debug_reset_request -> [rst_controller:reset_in1, rst_controller_001:reset_in1]
-	signal rst_controller_001_reset_out_reset                            : std_logic;                     -- rst_controller_001:reset_out -> clocks:ref_reset_reset
+	signal nios2_processor_debug_reset_request_reset                     : std_logic;                     -- nios2_processor:debug_reset_request -> rst_controller:reset_in1
+	signal rst_controller_001_reset_out_reset                            : std_logic;                     -- rst_controller_001:reset_out -> altpll_0:reset
 	signal rst_controller_002_reset_out_reset                            : std_logic;                     -- rst_controller_002:reset_out -> [mm_interconnect_0:jtag_uart_reset_reset_bridge_in_reset_reset, rst_controller_002_reset_out_reset:in]
 	signal reset_reset_n_ports_inv                                       : std_logic;                     -- reset_reset_n:inv -> [rst_controller:reset_in0, rst_controller_001:reset_in0, rst_controller_002:reset_in0]
 	signal mm_interconnect_0_jtag_uart_avalon_jtag_slave_read_ports_inv  : std_logic;                     -- mm_interconnect_0_jtag_uart_avalon_jtag_slave_read:inv -> jtag_uart:av_read_n
@@ -482,7 +427,7 @@ begin
 
 	leds : component my_nios1_LEDs
 		port map (
-			clk        => clocks_sys_clk_clk,                        --                 clk.clk
+			clk        => altpll_0_c0_clk,                           --                 clk.clk
 			reset_n    => rst_controller_reset_out_reset_ports_inv,  --               reset.reset_n
 			address    => mm_interconnect_0_leds_s1_address,         --                  s1.address
 			write_n    => mm_interconnect_0_leds_s1_write_ports_inv, --                    .write_n
@@ -492,18 +437,24 @@ begin
 			out_port   => leds_export                                -- external_connection.export
 		);
 
-	clocks : component my_nios1_clocks
+	altpll_0 : component my_nios1_altpll_0
 		port map (
-			ref_clk_clk        => clk_clk,                            --      ref_clk.clk
-			ref_reset_reset    => rst_controller_001_reset_out_reset, --    ref_reset.reset
-			sys_clk_clk        => clocks_sys_clk_clk,                 --      sys_clk.clk
-			sdram_clk_clk      => sdram_clk_clk,                      --    sdram_clk.clk
-			reset_source_reset => open                                -- reset_source.reset
+			clk       => clk_clk,                            --       inclk_interface.clk
+			reset     => rst_controller_001_reset_out_reset, -- inclk_interface_reset.reset
+			read      => open,                               --             pll_slave.read
+			write     => open,                               --                      .write
+			address   => open,                               --                      .address
+			readdata  => open,                               --                      .readdata
+			writedata => open,                               --                      .writedata
+			c0        => altpll_0_c0_clk,                    --                    c0.clk
+			areset    => open,                               --        areset_conduit.export
+			locked    => open,                               --        locked_conduit.export
+			phasedone => open                                --     phasedone_conduit.export
 		);
 
 	jtag_uart : component my_nios1_jtag_uart
 		port map (
-			clk            => clocks_sys_clk_clk,                                            --               clk.clk
+			clk            => altpll_0_c0_clk,                                               --               clk.clk
 			rst_n          => rst_controller_002_reset_out_reset_ports_inv,                  --             reset.reset_n
 			av_chipselect  => mm_interconnect_0_jtag_uart_avalon_jtag_slave_chipselect,      -- avalon_jtag_slave.chipselect
 			av_address     => mm_interconnect_0_jtag_uart_avalon_jtag_slave_address(0),      --                  .address
@@ -517,7 +468,7 @@ begin
 
 	nios2_processor : component my_nios1_nios2_processor
 		port map (
-			clk                                 => clocks_sys_clk_clk,                                            --                       clk.clk
+			clk                                 => altpll_0_c0_clk,                                               --                       clk.clk
 			reset_n                             => rst_controller_reset_out_reset_ports_inv,                      --                     reset.reset_n
 			reset_req                           => rst_controller_reset_out_reset_req,                            --                          .reset_req
 			d_address                           => nios2_processor_data_master_address,                           --               data_master.address
@@ -527,11 +478,13 @@ begin
 			d_waitrequest                       => nios2_processor_data_master_waitrequest,                       --                          .waitrequest
 			d_write                             => nios2_processor_data_master_write,                             --                          .write
 			d_writedata                         => nios2_processor_data_master_writedata,                         --                          .writedata
+			d_readdatavalid                     => nios2_processor_data_master_readdatavalid,                     --                          .readdatavalid
 			debug_mem_slave_debugaccess_to_roms => nios2_processor_data_master_debugaccess,                       --                          .debugaccess
 			i_address                           => nios2_processor_instruction_master_address,                    --        instruction_master.address
 			i_read                              => nios2_processor_instruction_master_read,                       --                          .read
 			i_readdata                          => nios2_processor_instruction_master_readdata,                   --                          .readdata
 			i_waitrequest                       => nios2_processor_instruction_master_waitrequest,                --                          .waitrequest
+			i_readdatavalid                     => nios2_processor_instruction_master_readdatavalid,              --                          .readdatavalid
 			irq                                 => nios2_processor_irq_irq,                                       --                       irq.irq
 			debug_reset_request                 => nios2_processor_debug_reset_request_reset,                     --       debug_reset_request.reset
 			debug_mem_slave_address             => mm_interconnect_0_nios2_processor_debug_mem_slave_address,     --           debug_mem_slave.address
@@ -547,7 +500,7 @@ begin
 
 	onchip_memory : component my_nios1_onchip_memory
 		port map (
-			clk        => clocks_sys_clk_clk,                            --   clk1.clk
+			clk        => altpll_0_c0_clk,                               --   clk1.clk
 			address    => mm_interconnect_0_onchip_memory_s1_address,    --     s1.address
 			clken      => mm_interconnect_0_onchip_memory_s1_clken,      --       .clken
 			chipselect => mm_interconnect_0_onchip_memory_s1_chipselect, --       .chipselect
@@ -561,7 +514,7 @@ begin
 
 	sdram : component my_nios1_sdram
 		port map (
-			clk            => clocks_sys_clk_clk,                              --   clk.clk
+			clk            => altpll_0_c0_clk,                                 --   clk.clk
 			reset_n        => rst_controller_reset_out_reset_ports_inv,        -- reset.reset_n
 			az_addr        => mm_interconnect_0_sdram_s1_address,              --    s1.address
 			az_be_n        => mm_interconnect_0_sdram_s1_byteenable_ports_inv, --      .byteenable_n
@@ -585,7 +538,7 @@ begin
 
 	switches : component my_nios1_switches
 		port map (
-			clk      => clocks_sys_clk_clk,                       --                 clk.clk
+			clk      => altpll_0_c0_clk,                          --                 clk.clk
 			reset_n  => rst_controller_reset_out_reset_ports_inv, --               reset.reset_n
 			address  => mm_interconnect_0_switches_s1_address,    --                  s1.address
 			readdata => mm_interconnect_0_switches_s1_readdata,   --                    .readdata
@@ -594,7 +547,7 @@ begin
 
 	mm_interconnect_0 : component my_nios1_mm_interconnect_0
 		port map (
-			clocks_sys_clk_clk                                => clocks_sys_clk_clk,                                            --                              clocks_sys_clk.clk
+			altpll_0_c0_clk                                   => altpll_0_c0_clk,                                               --                                 altpll_0_c0.clk
 			jtag_uart_reset_reset_bridge_in_reset_reset       => rst_controller_002_reset_out_reset,                            --       jtag_uart_reset_reset_bridge_in_reset.reset
 			nios2_processor_reset_reset_bridge_in_reset_reset => rst_controller_reset_out_reset,                                -- nios2_processor_reset_reset_bridge_in_reset.reset
 			nios2_processor_data_master_address               => nios2_processor_data_master_address,                           --                 nios2_processor_data_master.address
@@ -602,6 +555,7 @@ begin
 			nios2_processor_data_master_byteenable            => nios2_processor_data_master_byteenable,                        --                                            .byteenable
 			nios2_processor_data_master_read                  => nios2_processor_data_master_read,                              --                                            .read
 			nios2_processor_data_master_readdata              => nios2_processor_data_master_readdata,                          --                                            .readdata
+			nios2_processor_data_master_readdatavalid         => nios2_processor_data_master_readdatavalid,                     --                                            .readdatavalid
 			nios2_processor_data_master_write                 => nios2_processor_data_master_write,                             --                                            .write
 			nios2_processor_data_master_writedata             => nios2_processor_data_master_writedata,                         --                                            .writedata
 			nios2_processor_data_master_debugaccess           => nios2_processor_data_master_debugaccess,                       --                                            .debugaccess
@@ -609,6 +563,7 @@ begin
 			nios2_processor_instruction_master_waitrequest    => nios2_processor_instruction_master_waitrequest,                --                                            .waitrequest
 			nios2_processor_instruction_master_read           => nios2_processor_instruction_master_read,                       --                                            .read
 			nios2_processor_instruction_master_readdata       => nios2_processor_instruction_master_readdata,                   --                                            .readdata
+			nios2_processor_instruction_master_readdatavalid  => nios2_processor_instruction_master_readdatavalid,              --                                            .readdatavalid
 			jtag_uart_avalon_jtag_slave_address               => mm_interconnect_0_jtag_uart_avalon_jtag_slave_address,         --                 jtag_uart_avalon_jtag_slave.address
 			jtag_uart_avalon_jtag_slave_write                 => mm_interconnect_0_jtag_uart_avalon_jtag_slave_write,           --                                            .write
 			jtag_uart_avalon_jtag_slave_read                  => mm_interconnect_0_jtag_uart_avalon_jtag_slave_read,            --                                            .read
@@ -651,7 +606,7 @@ begin
 
 	irq_mapper : component my_nios1_irq_mapper
 		port map (
-			clk           => clocks_sys_clk_clk,             --       clk.clk
+			clk           => altpll_0_c0_clk,                --       clk.clk
 			reset         => rst_controller_reset_out_reset, -- clk_reset.reset
 			receiver0_irq => irq_mapper_receiver0_irq,       -- receiver0.irq
 			sender_irq    => nios2_processor_irq_irq         --    sender.irq
@@ -687,7 +642,7 @@ begin
 		port map (
 			reset_in0      => reset_reset_n_ports_inv,                   -- reset_in0.reset
 			reset_in1      => nios2_processor_debug_reset_request_reset, -- reset_in1.reset
-			clk            => clocks_sys_clk_clk,                        --       clk.clk
+			clk            => altpll_0_c0_clk,                           --       clk.clk
 			reset_out      => rst_controller_reset_out_reset,            -- reset_out.reset
 			reset_req      => rst_controller_reset_out_reset_req,        --          .reset_req
 			reset_req_in0  => '0',                                       -- (terminated)
@@ -724,7 +679,7 @@ begin
 
 	rst_controller_001 : component my_nios1_rst_controller_001
 		generic map (
-			NUM_RESET_INPUTS          => 2,
+			NUM_RESET_INPUTS          => 1,
 			OUTPUT_RESET_SYNC_EDGES   => "deassert",
 			SYNC_DEPTH                => 2,
 			RESET_REQUEST_PRESENT     => 0,
@@ -750,44 +705,44 @@ begin
 			ADAPT_RESET_REQUEST       => 0
 		)
 		port map (
-			reset_in0      => reset_reset_n_ports_inv,                   -- reset_in0.reset
-			reset_in1      => nios2_processor_debug_reset_request_reset, -- reset_in1.reset
-			clk            => clk_clk,                                   --       clk.clk
-			reset_out      => rst_controller_001_reset_out_reset,        -- reset_out.reset
-			reset_req      => open,                                      -- (terminated)
-			reset_req_in0  => '0',                                       -- (terminated)
-			reset_req_in1  => '0',                                       -- (terminated)
-			reset_in2      => '0',                                       -- (terminated)
-			reset_req_in2  => '0',                                       -- (terminated)
-			reset_in3      => '0',                                       -- (terminated)
-			reset_req_in3  => '0',                                       -- (terminated)
-			reset_in4      => '0',                                       -- (terminated)
-			reset_req_in4  => '0',                                       -- (terminated)
-			reset_in5      => '0',                                       -- (terminated)
-			reset_req_in5  => '0',                                       -- (terminated)
-			reset_in6      => '0',                                       -- (terminated)
-			reset_req_in6  => '0',                                       -- (terminated)
-			reset_in7      => '0',                                       -- (terminated)
-			reset_req_in7  => '0',                                       -- (terminated)
-			reset_in8      => '0',                                       -- (terminated)
-			reset_req_in8  => '0',                                       -- (terminated)
-			reset_in9      => '0',                                       -- (terminated)
-			reset_req_in9  => '0',                                       -- (terminated)
-			reset_in10     => '0',                                       -- (terminated)
-			reset_req_in10 => '0',                                       -- (terminated)
-			reset_in11     => '0',                                       -- (terminated)
-			reset_req_in11 => '0',                                       -- (terminated)
-			reset_in12     => '0',                                       -- (terminated)
-			reset_req_in12 => '0',                                       -- (terminated)
-			reset_in13     => '0',                                       -- (terminated)
-			reset_req_in13 => '0',                                       -- (terminated)
-			reset_in14     => '0',                                       -- (terminated)
-			reset_req_in14 => '0',                                       -- (terminated)
-			reset_in15     => '0',                                       -- (terminated)
-			reset_req_in15 => '0'                                        -- (terminated)
+			reset_in0      => reset_reset_n_ports_inv,            -- reset_in0.reset
+			clk            => clk_clk,                            --       clk.clk
+			reset_out      => rst_controller_001_reset_out_reset, -- reset_out.reset
+			reset_req      => open,                               -- (terminated)
+			reset_req_in0  => '0',                                -- (terminated)
+			reset_in1      => '0',                                -- (terminated)
+			reset_req_in1  => '0',                                -- (terminated)
+			reset_in2      => '0',                                -- (terminated)
+			reset_req_in2  => '0',                                -- (terminated)
+			reset_in3      => '0',                                -- (terminated)
+			reset_req_in3  => '0',                                -- (terminated)
+			reset_in4      => '0',                                -- (terminated)
+			reset_req_in4  => '0',                                -- (terminated)
+			reset_in5      => '0',                                -- (terminated)
+			reset_req_in5  => '0',                                -- (terminated)
+			reset_in6      => '0',                                -- (terminated)
+			reset_req_in6  => '0',                                -- (terminated)
+			reset_in7      => '0',                                -- (terminated)
+			reset_req_in7  => '0',                                -- (terminated)
+			reset_in8      => '0',                                -- (terminated)
+			reset_req_in8  => '0',                                -- (terminated)
+			reset_in9      => '0',                                -- (terminated)
+			reset_req_in9  => '0',                                -- (terminated)
+			reset_in10     => '0',                                -- (terminated)
+			reset_req_in10 => '0',                                -- (terminated)
+			reset_in11     => '0',                                -- (terminated)
+			reset_req_in11 => '0',                                -- (terminated)
+			reset_in12     => '0',                                -- (terminated)
+			reset_req_in12 => '0',                                -- (terminated)
+			reset_in13     => '0',                                -- (terminated)
+			reset_req_in13 => '0',                                -- (terminated)
+			reset_in14     => '0',                                -- (terminated)
+			reset_req_in14 => '0',                                -- (terminated)
+			reset_in15     => '0',                                -- (terminated)
+			reset_req_in15 => '0'                                 -- (terminated)
 		);
 
-	rst_controller_002 : component my_nios1_rst_controller_002
+	rst_controller_002 : component my_nios1_rst_controller_001
 		generic map (
 			NUM_RESET_INPUTS          => 1,
 			OUTPUT_RESET_SYNC_EDGES   => "deassert",
@@ -816,7 +771,7 @@ begin
 		)
 		port map (
 			reset_in0      => reset_reset_n_ports_inv,            -- reset_in0.reset
-			clk            => clocks_sys_clk_clk,                 --       clk.clk
+			clk            => altpll_0_c0_clk,                    --       clk.clk
 			reset_out      => rst_controller_002_reset_out_reset, -- reset_out.reset
 			reset_req      => open,                               -- (terminated)
 			reset_req_in0  => '0',                                -- (terminated)

@@ -28,10 +28,10 @@
 // ------------------------------------------
 // Generation parameters:
 //   output_name:         my_nios1_mm_interconnect_0_cmd_demux_001
-//   ST_DATA_W:           104
+//   ST_DATA_W:           103
 //   ST_CHANNEL_W:        6
 //   NUM_OUTPUTS:         3
-//   VALID_WIDTH:         1
+//   VALID_WIDTH:         6
 // ------------------------------------------
 
 //------------------------------------------
@@ -45,8 +45,8 @@ module my_nios1_mm_interconnect_0_cmd_demux_001
     // -------------------
     // Sink
     // -------------------
-    input  [1-1      : 0]   sink_valid,
-    input  [104-1    : 0]   sink_data, // ST_DATA_W=104
+    input  [6-1      : 0]   sink_valid,
+    input  [103-1    : 0]   sink_data, // ST_DATA_W=103
     input  [6-1 : 0]   sink_channel, // ST_CHANNEL_W=6
     input                         sink_startofpacket,
     input                         sink_endofpacket,
@@ -56,21 +56,21 @@ module my_nios1_mm_interconnect_0_cmd_demux_001
     // Sources 
     // -------------------
     output reg                      src0_valid,
-    output reg [104-1    : 0] src0_data, // ST_DATA_W=104
+    output reg [103-1    : 0] src0_data, // ST_DATA_W=103
     output reg [6-1 : 0] src0_channel, // ST_CHANNEL_W=6
     output reg                      src0_startofpacket,
     output reg                      src0_endofpacket,
     input                           src0_ready,
 
     output reg                      src1_valid,
-    output reg [104-1    : 0] src1_data, // ST_DATA_W=104
+    output reg [103-1    : 0] src1_data, // ST_DATA_W=103
     output reg [6-1 : 0] src1_channel, // ST_CHANNEL_W=6
     output reg                      src1_startofpacket,
     output reg                      src1_endofpacket,
     input                           src1_ready,
 
     output reg                      src2_valid,
-    output reg [104-1    : 0] src2_data, // ST_DATA_W=104
+    output reg [103-1    : 0] src2_data, // ST_DATA_W=103
     output reg [6-1 : 0] src2_channel, // ST_CHANNEL_W=6
     output reg                      src2_startofpacket,
     output reg                      src2_endofpacket,
@@ -99,21 +99,21 @@ module my_nios1_mm_interconnect_0_cmd_demux_001
         src0_endofpacket   = sink_endofpacket;
         src0_channel       = sink_channel >> NUM_OUTPUTS;
 
-        src0_valid         = sink_channel[0] && sink_valid;
+        src0_valid         = sink_channel[0] && sink_valid[0];
 
         src1_data          = sink_data;
         src1_startofpacket = sink_startofpacket;
         src1_endofpacket   = sink_endofpacket;
         src1_channel       = sink_channel >> NUM_OUTPUTS;
 
-        src1_valid         = sink_channel[1] && sink_valid;
+        src1_valid         = sink_channel[1] && sink_valid[1];
 
         src2_data          = sink_data;
         src2_startofpacket = sink_startofpacket;
         src2_endofpacket   = sink_endofpacket;
         src2_channel       = sink_channel >> NUM_OUTPUTS;
 
-        src2_valid         = sink_channel[2] && sink_valid;
+        src2_valid         = sink_channel[2] && sink_valid[2];
 
     end
 

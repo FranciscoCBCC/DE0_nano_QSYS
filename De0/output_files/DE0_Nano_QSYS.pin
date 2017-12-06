@@ -95,7 +95,7 @@ RESERVED_INPUT_WITH_WEAK_PULLUP : B7        :        :                   :      
 GND+                         : B8        :        :                   :         : 8         :                
 switches_export[2]           : B9        : input  : 2.5 V             :         : 7         : Y              
 RESERVED_INPUT_WITH_WEAK_PULLUP : B10       :        :                   :         : 7         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : B11       :        :                   :         : 7         :                
+switches_export[5]           : B11       : input  : 2.5 V             :         : 7         : N              
 RESERVED_INPUT_WITH_WEAK_PULLUP : B12       :        :                   :         : 7         :                
 leds_export[2]               : B13       : output : 2.5 V             :         : 7         : Y              
 RESERVED_INPUT_WITH_WEAK_PULLUP : B14       :        :                   :         : 7         :                
@@ -141,14 +141,14 @@ GNDA3                        : E5        : gnd    :                   :         
 RESERVED_INPUT_WITH_WEAK_PULLUP : E6        :        :                   :         : 8         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : E7        :        :                   :         : 8         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : E8        :        :                   :         : 8         :                
-switches_export[7]           : E9        : input  : 2.5 V             :         : 7         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : E9        :        :                   :         : 7         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : E10       :        :                   :         : 7         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : E11       :        :                   :         : 7         :                
 GNDA2                        : E12       : gnd    :                   :         :           :                
 GND                          : E13       : gnd    :                   :         :           :                
 VCCIO6                       : E14       : power  :                   : 2.5V    : 6         :                
-switches_export[5]           : E15       : input  : 2.5 V             :         : 6         : N              
-switches_export[4]           : E16       : input  : 2.5 V             :         : 6         : N              
+switches_export[6]           : E15       : input  : 2.5 V             :         : 6         : N              
+switches_export[7]           : E16       : input  : 2.5 V             :         : 6         : N              
 RESERVED_INPUT_WITH_WEAK_PULLUP : F1        :        :                   :         : 1         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : F2        :        :                   :         : 1         :                
 leds_export[5]               : F3        : output : 2.5 V             :         : 1         : Y              
@@ -161,7 +161,7 @@ RESERVED_INPUT_WITH_WEAK_PULLUP : F9        :        :                   :      
 GND                          : F10       : gnd    :                   :         :           :                
 VCCINT                       : F11       : power  :                   : 1.2V    :           :                
 VCCA2                        : F12       : power  :                   : 2.5V    :           :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : F13       :        :                   :         : 6         :                
+switches_export[4]           : F13       : input  : 2.5 V             :         : 6         : N              
 RESERVED_INPUT_WITH_WEAK_PULLUP : F14       :        :                   :         : 6         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : F15       :        :                   :         : 6         :                
 ~ALTERA_nCEO~ / RESERVED_OUTPUT_OPEN_DRAIN : F16       : output : 2.5 V             :         : 6         : N              
@@ -269,7 +269,7 @@ sdram_addr[1]                : N5        : output : 2.5 V             :         
 sdram_addr[2]                : N6        : output : 2.5 V             :         : 3         : Y              
 GND                          : N7        : gnd    :                   :         :           :                
 sdram_addr[6]                : N8        : output : 2.5 V             :         : 3         : Y              
-switches_export[6]           : N9        : input  : 2.5 V             :         : 4         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : N9        :        :                   :         : 4         :                
 GND                          : N10       : gnd    :                   :         :           :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : N11       :        :                   :         : 4         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : N12       :        :                   :         : 4         :                
@@ -296,7 +296,7 @@ RESERVED_INPUT_WITH_WEAK_PULLUP : P16       :        :                   :      
 sdram_addr[8]                : R1        : output : 2.5 V             :         : 2         : Y              
 GND                          : R2        : gnd    :                   :         :           :                
 sdram_dq[11]                 : R3        : bidir  : 2.5 V             :         : 3         : Y              
-sdram_clk_clk                : R4        : output : 2.5 V             :         : 3         : Y              
+RESERVED_INPUT_WITH_WEAK_PULLUP : R4        :        :                   :         : 3         :                
 sdram_dq[12]                 : R5        : bidir  : 2.5 V             :         : 3         : Y              
 sdram_dqm[0]                 : R6        : output : 2.5 V             :         : 3         : Y              
 sdram_dq[7]                  : R7        : bidir  : 2.5 V             :         : 3         : Y              

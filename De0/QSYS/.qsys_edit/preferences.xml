@@ -3,12 +3,12 @@
  <debug showDebugMenu="0" />
  <systemtable filter="All Interfaces">
   <columns>
-   <connections preferredWidth="191" />
+   <connections preferredWidth="159" />
    <irq preferredWidth="34" />
   </columns>
  </systemtable>
- <library
-   expandedCategories="Library/Basic Functions/Simulation; Debug and Verification/Debug and Performance,Library/University Program,Library/Basic Functions,Library/Basic Functions/Simulation; Debug and Verification,Library/Processors and Peripherals/Hard Processor Systems,Project,Library,Library/Processors and Peripherals,Library/University Program/Clock" />
- <window width="1936" height="1056" x="-8" y="-8" />
+ <library expandedCategories="Project,Library" />
+ <window width="1936" height="1052" x="-8" y="-8" />
  <generation synthesis="VHDL" />
+ <hdlexample language="VHDL" />
 </preferences>
