@@ -12,7 +12,8 @@ module my_nios1 (
 	sdram_dqm,
 	sdram_ras_n,
 	sdram_we_n,
-	switches_export);	
+	switches_export,
+	sdram_clk_clk);	
 
 	input		clk_clk;
 	output	[7:0]	leds_export;
@@ -27,4 +28,5 @@ module my_nios1 (
 	output		sdram_ras_n;
 	output		sdram_we_n;
 	input	[7:0]	switches_export;
+	output		sdram_clk_clk;
 endmodule

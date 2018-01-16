@@ -1,5 +1,5 @@
 EDA Netlist Writer report for DE0_Nano_QSYS
-Thu Nov 30 14:52:22 2017
+Tue Oct 03 13:41:17 2017
 Quartus II 64-Bit Version 15.0.0 Build 145 04/22/2015 Patches 0.01we SJ Web Edition
 
 
@@ -37,7 +37,7 @@ agreement for further details.
 +-------------------------------------------------------------------+
 ; EDA Netlist Writer Summary                                        ;
 +---------------------------+---------------------------------------+
-; EDA Netlist Writer Status ; Successful - Thu Nov 30 14:52:22 2017 ;
+; EDA Netlist Writer Status ; Successful - Tue Oct 03 13:41:17 2017 ;
 ; Revision Name             ; DE0_Nano_QSYS                         ;
 ; Top-level Entity Name     ; my_nios1                              ;
 ; Family                    ; Cyclone IV E                          ;
@@ -67,20 +67,20 @@ agreement for further details.
 +---------------------------------------------------------------------------------------------------+------------------------+
 
 
-+-------------------------------------------------------------------------------------------------------+
-; Simulation Generated Files                                                                            ;
-+-------------------------------------------------------------------------------------------------------+
-; Generated Files                                                                                       ;
-+-------------------------------------------------------------------------------------------------------+
-; C:/Users/Francisco/git/DE0_nano_QSYS/De0/simulation/modelsim/DE0_Nano_QSYS_6_1200mv_85c_slow.vho      ;
-; C:/Users/Francisco/git/DE0_nano_QSYS/De0/simulation/modelsim/DE0_Nano_QSYS_6_1200mv_0c_slow.vho       ;
-; C:/Users/Francisco/git/DE0_nano_QSYS/De0/simulation/modelsim/DE0_Nano_QSYS_min_1200mv_0c_fast.vho     ;
-; C:/Users/Francisco/git/DE0_nano_QSYS/De0/simulation/modelsim/DE0_Nano_QSYS.vho                        ;
-; C:/Users/Francisco/git/DE0_nano_QSYS/De0/simulation/modelsim/DE0_Nano_QSYS_6_1200mv_85c_vhd_slow.sdo  ;
-; C:/Users/Francisco/git/DE0_nano_QSYS/De0/simulation/modelsim/DE0_Nano_QSYS_6_1200mv_0c_vhd_slow.sdo   ;
-; C:/Users/Francisco/git/DE0_nano_QSYS/De0/simulation/modelsim/DE0_Nano_QSYS_min_1200mv_0c_vhd_fast.sdo ;
-; C:/Users/Francisco/git/DE0_nano_QSYS/De0/simulation/modelsim/DE0_Nano_QSYS_vhd.sdo                    ;
-+-------------------------------------------------------------------------------------------------------+
++-----------------------------------------------------------------------------------------------------------+
+; Simulation Generated Files                                                                                ;
++-----------------------------------------------------------------------------------------------------------+
+; Generated Files                                                                                           ;
++-----------------------------------------------------------------------------------------------------------+
+; C:/Users/Francisco/Desktop/DE0_nano_QSYS/De0/simulation/modelsim/DE0_Nano_QSYS_6_1200mv_85c_slow.vho      ;
+; C:/Users/Francisco/Desktop/DE0_nano_QSYS/De0/simulation/modelsim/DE0_Nano_QSYS_6_1200mv_0c_slow.vho       ;
+; C:/Users/Francisco/Desktop/DE0_nano_QSYS/De0/simulation/modelsim/DE0_Nano_QSYS_min_1200mv_0c_fast.vho     ;
+; C:/Users/Francisco/Desktop/DE0_nano_QSYS/De0/simulation/modelsim/DE0_Nano_QSYS.vho                        ;
+; C:/Users/Francisco/Desktop/DE0_nano_QSYS/De0/simulation/modelsim/DE0_Nano_QSYS_6_1200mv_85c_vhd_slow.sdo  ;
+; C:/Users/Francisco/Desktop/DE0_nano_QSYS/De0/simulation/modelsim/DE0_Nano_QSYS_6_1200mv_0c_vhd_slow.sdo   ;
+; C:/Users/Francisco/Desktop/DE0_nano_QSYS/De0/simulation/modelsim/DE0_Nano_QSYS_min_1200mv_0c_vhd_fast.sdo ;
+; C:/Users/Francisco/Desktop/DE0_nano_QSYS/De0/simulation/modelsim/DE0_Nano_QSYS_vhd.sdo                    ;
++-----------------------------------------------------------------------------------------------------------+
 
 
 +-----------------------------+
@@ -89,20 +89,20 @@ agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit EDA Netlist Writer
     Info: Version 15.0.0 Build 145 04/22/2015 Patches 0.01we SJ Web Edition
-    Info: Processing started: Thu Nov 30 14:52:17 2017
+    Info: Processing started: Tue Oct 03 13:41:14 2017
 Info: Command: quartus_eda --read_settings_files=off --write_settings_files=off DE0_Nano_QSYS -c DE0_Nano_QSYS
-Info (204019): Generated file DE0_Nano_QSYS_6_1200mv_85c_slow.vho in folder "C:/Users/Francisco/git/DE0_nano_QSYS/De0/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file DE0_Nano_QSYS_6_1200mv_0c_slow.vho in folder "C:/Users/Francisco/git/DE0_nano_QSYS/De0/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file DE0_Nano_QSYS_min_1200mv_0c_fast.vho in folder "C:/Users/Francisco/git/DE0_nano_QSYS/De0/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file DE0_Nano_QSYS.vho in folder "C:/Users/Francisco/git/DE0_nano_QSYS/De0/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file DE0_Nano_QSYS_6_1200mv_85c_vhd_slow.sdo in folder "C:/Users/Francisco/git/DE0_nano_QSYS/De0/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file DE0_Nano_QSYS_6_1200mv_0c_vhd_slow.sdo in folder "C:/Users/Francisco/git/DE0_nano_QSYS/De0/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file DE0_Nano_QSYS_min_1200mv_0c_vhd_fast.sdo in folder "C:/Users/Francisco/git/DE0_nano_QSYS/De0/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file DE0_Nano_QSYS_vhd.sdo in folder "C:/Users/Francisco/git/DE0_nano_QSYS/De0/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file DE0_Nano_QSYS_6_1200mv_85c_slow.vho in folder "C:/Users/Francisco/Desktop/DE0_nano_QSYS/De0/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file DE0_Nano_QSYS_6_1200mv_0c_slow.vho in folder "C:/Users/Francisco/Desktop/DE0_nano_QSYS/De0/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file DE0_Nano_QSYS_min_1200mv_0c_fast.vho in folder "C:/Users/Francisco/Desktop/DE0_nano_QSYS/De0/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file DE0_Nano_QSYS.vho in folder "C:/Users/Francisco/Desktop/DE0_nano_QSYS/De0/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file DE0_Nano_QSYS_6_1200mv_85c_vhd_slow.sdo in folder "C:/Users/Francisco/Desktop/DE0_nano_QSYS/De0/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file DE0_Nano_QSYS_6_1200mv_0c_vhd_slow.sdo in folder "C:/Users/Francisco/Desktop/DE0_nano_QSYS/De0/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file DE0_Nano_QSYS_min_1200mv_0c_vhd_fast.sdo in folder "C:/Users/Francisco/Desktop/DE0_nano_QSYS/De0/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file DE0_Nano_QSYS_vhd.sdo in folder "C:/Users/Francisco/Desktop/DE0_nano_QSYS/De0/simulation/modelsim/" for EDA simulation tool
 Info: Quartus II 64-Bit EDA Netlist Writer was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 638 megabytes
-    Info: Processing ended: Thu Nov 30 14:52:23 2017
-    Info: Elapsed time: 00:00:06
-    Info: Total CPU time (on all processors): 00:00:05
+    Info: Peak virtual memory: 613 megabytes
+    Info: Processing ended: Tue Oct 03 13:41:17 2017
+    Info: Elapsed time: 00:00:03
+    Info: Total CPU time (on all processors): 00:00:04
 
 
